@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmented Memory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #121212;
+            overflow: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('imagens/imagem de fundo.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: -1;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            animation: flicker 1.5s infinite alternate;
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .menu button {
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #555;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .menu button:hover {
+            background-color: #555;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: #2a212c;
+            border: 2px solid rgb(133, 85, 85);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            color: #aaa;
+        }
+
+        #sound-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        .intro-screen,
+        .video-screen,
+        #room-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998;
+        }
+
+        .intro-screen {
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+
+        .intro-content h2 {
+            padding: 2rem;
+            line-height: 2.8rem;
+            white-space: pre-line;
+        }
+
+        .video-screen {
+            background-color: black;
+            z-index: 10000;
+        }
+
+        .video-screen video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #room-screen {
+            background-color: black;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        #room-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #player {
+            position: absolute;
+            width: 300px;
+            left: 50px;
+            top: 50px;
+            transition: left 0.05s, top 0.05s;
+            z-index: 10;
+        }
+
+        #diario {
+            position: absolute;
+            bottom: 200px;
+            right: 500px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        #interaction-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            z-index: 20000;
+        }
+
+        #interaction-screen img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        /* Botão menu dentro do jogo */
+        #back-to-menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            padding: 10px;
+            font-family: 'Press Start 2P';
+            background-color: #333;
+            color: white;
+            border: 2px solid #555;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #back-to-menu-button:hover {
+            background-color: #555;
+        }
+
+        #gif-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            z-index: 10001;
+        }
+
+        #gif-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+    <audio id="background-music" src="audios/drone-high-tension-and-suspense-background-162365 (1).mp3" loop></audio>
+    <audio id="intro-music" src="audios/dont-cry-jennifer-snes.mp3" loop></audio>
+</head>
+
+<body>
+
+    <div class="background" id="background"></div>
+    <img id="sound-toggle" src="imagens/on.png" alt="Toggle Sound" onclick="toggleSound()">
+    <h1 id="titulo">Fragmented Memory</h1>
+
+    <div class="menu" id="menu">
+        <button onclick="startGame()">Começar Jogo</button>
+        <button onclick="showCredits()">Créditos</button>
+    </div>
+
+    <div class="video-screen" id="gif-screen">
+        <img src="ethan-acordando.gif" alt="Ethan acordando">
+    </div>
+
+    <div class="grid" id="credits" style="display: none;">
+        <div class="card">
+            <div class="description">Heloísa Sayuri Silva Saito</div>
+        </div>
+        <div class="card">
+            <div class="description">Lívia Maschietto Boneti</div>
+        </div>
+        <div class="card">
+            <div class="description">Maria Eduarda Bellarmino Duarte</div>
+        </div>
+        <div class="card">
+            <div class="description">Maria Eduarda Castro Lachimia</div>
+        </div>
+    </div>
+
+    <div class="menu" id="back-menu" style="display: none;">
+        <button onclick="backToMenu()">Voltar</button>
+    </div>
+
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-content">
+            <h2 id="intro-text"></h2>
+        </div>
+    </div>
+
+    <div class="video-screen" id="video-screen">
+        <video id="cutscene" src="" autoplay></video>
+    </div>
+
+
+    <script>
+        const music = document.getElementById('background-music');
+        const introMusic = document.getElementById('intro-music');
+        const soundToggle = document.getElementById('sound-toggle');
+        const background = document.getElementById('background');
+        const titulo = document.getElementById('titulo');
+        let isPlaying = true;
+
+        function toggleSound() {
+            if (isPlaying) {
+                music.pause();
+                introMusic.pause();
+                soundToggle.src = "imagens/off.png";
+            } else {
+                const introScreenActive = document.getElementById('intro-screen').style.display === 'flex';
+                (introScreenActive ? introMusic : music).play().catch(err => console.error(err));
+                soundToggle.src = "imagens/on.png";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function startGame() {
+            hideAllScreens();
+            document.getElementById('intro-screen').style.display = 'flex';
+            music.pause();
+            introMusic.play();
+            const text = `Você acorda em um 
+mundo destruído, onde você não sabe
+onde está ou o que está acontecendo...
+O que você faz?`;
+            document.getElementById('intro-text').innerHTML = '';
+            typeText(text, 0);
+        }
+
+        function hideAllScreens() {
+            ['menu', 'credits', 'back-menu'].forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            background.style.display = 'none';
+            titulo.style.display = 'none';
+        }
+
+        function typeText(text, index) {
+            if (index < text.length) {
+                const char = text.charAt(index);
+                document.getElementById('intro-text').innerHTML += char;
+                setTimeout(() => typeText(text, index + 1), 40);
+            } else {
+                setTimeout(playVideo, 1000);
+            }
+        }
+
+        function playVideo() {
+            document.getElementById('intro-screen').style.display = 'none';
+            introMusic.pause();
+
+            const videoScreen = document.getElementById('video-screen');
+            const video = document.getElementById('cutscene');
+            videoScreen.style.display = 'flex';
+
+            // Lista de vídeos para exibir em sequência
+            const videoSources = [
+                'cenas/olhos abrindo.mp4',
+                'cenas/ethan-acordando.mp4'
+            ];
+
+            let currentVideo = 0;
+            video.src = videoSources[currentVideo];
+            video.load();
+            video.play();
+
+            video.addEventListener('ended', () => {
+                currentVideo++;
+                if (currentVideo < videoSources.length) {
+                    video.src = videoSources[currentVideo];
+                    video.load();
+                    video.play();
+                } else {
+                    window.location.href = 'quarto-ethan.html'; // Redireciona depois do último vídeo
+                }
+            });
+        }
+
+
+        function showCredits() {
+            hideAllScreens();
+            document.getElementById('credits').style.display = 'grid';
+            document.getElementById('back-menu').style.display = 'flex';
+        }
+
+        function backToMenu() {
+            document.getElementById('credits').style.display = 'none';
+            document.getElementById('back-menu').style.display = 'none';
+            document.getElementById('menu').style.display = 'flex';
+            background.style.display = 'block';
+            titulo.style.display = 'block';
+        }
+
+        function backToMenuFromRoom() {
+            document.getElementById('room-screen').style.display = 'none';
+            background.style.display = 'block';
+            titulo.style.display = 'block';
+            document.getElementById('menu').style.display = 'flex';
+            music.pause();
+            music.currentTime = 0;
+            introMusic.pause();
+            introMusic.currentTime = 0;
+        }
+    </script>
+
+</body>
+
+</html>

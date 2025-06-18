@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarto da Livx</title>
+
+    <link rel="stylesheet" href="liv.css">
+</head>
+
+<body>
+
+    <div class="menu" id="back-menu">
+        <button onclick="backToMenu()">Menu</button>
+    </div>
+    <div class="menu" id="inventario-botao" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+        <button onclick="toggleInventario()">Inventário(I)</button>
+    </div>
+
+    <!-- Janela de inventário -->
+    <div id="inventario-janela">
+        <ul id="inventario-lista" style="list-style: none; padding: 0; margin: 0;"></ul>
+    </div>
+    <div id="Livx">
+        <img src="personagens/livx-encontrada.png" alt="livx">
+    </div>
+
+    <div>
+        <img src="ethan/ethan-parado-unscreen.gif" id="player" alt="Ethan">
+    </div>
+
+    <div id="dialogueScreen">
+        <div id="dialogueContent">
+            <div id="ethanDialogue">
+                <img id="ethanDialogueImg" src="ethan/ethan-parado-unscreen.gif" alt="Ethan">
+                <p id="ethanDialogueName"></p>
+            </div>
+            <div id="dialogueText">
+                <p id="dialogueMessage"></p>
+                <div id="dialogueIndicator">▼</div>
+            </div>
+            <div id="livxDialogue">
+                <img id="livxDialogueImg" src="personagens/livx-encontrada.png" alt="livx">
+                <p id="livxDialogueName"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="interactionMessage">Pressione "E" para interagir.</div>
+    <div id="interaction-screen">
+        <img id="interaction-image" src="" alt="Imagem do item" />
+        <button onclick="endInteraction()">Fechar</button>
+    </div>
+
+    <audio id="stepSound" src="audios/ethan-andando.mp3"></audio>
+
+
+    <script src="inventory.js"></script>
+    <script src="liv.js"></script>
+
+</body>
+
+</html>

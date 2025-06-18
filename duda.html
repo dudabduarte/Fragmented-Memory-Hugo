@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarto da Duda</title>
+
+    <link rel="stylesheet" href="duda.css">
+</head>
+
+<body>
+
+    <div class="menu" id="back-menu">
+        <button onclick="backToMenu()">Menu</button>
+    </div>
+    <div class="menu" id="inventario-botao" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+        <button onclick="toggleInventario()">Inventário(I)</button>
+    </div>
+
+    <!-- Janela de inventário -->
+    <div id="inventario-janela">
+        <ul id="inventario-lista" style="list-style: none; padding: 0; margin: 0;"></ul>
+    </div>
+    <div id="Duda">
+        <img src="personagens/duda-encontrada.png" alt="duda">
+    </div>
+
+    <div>
+        <img src="ethan/ethan-parado-unscreen.gif" id="player" alt="Ethan">
+    </div>
+
+    <div id="dialogueScreen">
+        <div id="dialogueContent">
+            <div id="ethanDialogue">
+                <img id="ethanDialogueImg" src="ethan/ethan-parado-unscreen.gif" alt="Ethan">
+                <p id="ethanDialogueName"></p>
+            </div>
+            <div id="dialogueText">
+                <p id="dialogueMessage"></p>
+                <div id="dialogueIndicator">▼</div>
+            </div>
+            <div id="dudaDialogue">
+                <img id="dudaDialogueImg" src="personagens/duda-encontrada.png" alt="duda">
+                <p id="dudaDialogueName"></p>
+            </div>
+        </div>
+    </div>
+    <div id="interaction-screen">
+        <img id="interaction-image" src="" alt="Imagem do item" />
+        <button onclick="fecharInteracao()">Fechar</button>
+    </div>
+
+    <audio id="stepSound" src="audios/ethan-andando.mp3"></audio>
+
+
+    <div id="interactionMessage">Pressione "E" para interagir.</div>
+
+    <script src="inventory.js"></script>
+    <script src="duda.js"></script>
+
+</body>
+
+</html>

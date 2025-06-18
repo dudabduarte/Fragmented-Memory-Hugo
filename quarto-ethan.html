@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmented Memory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="quarto-ethan.css">
+
+
+    <audio id="background-music" src="drone-high-tension-and-suspense-background-162365 (1)" loop></audio>
+    <audio id="intro-music" src="audios/dont-cry-jennifer-snes.mp3" loop></audio>
+</head>
+
+<body>
+    <div class="menu" id="inventario-botao">
+        <button onclick="toggleInventario()">Inventário(I)</button>
+    </div>
+
+    <!-- Janela de inventário -->
+    <div id="inventario-janela">
+        <ul id="inventario-lista" style="list-style: none; padding: 0; margin: 0;"></ul>
+    </div>
+
+    <div class="menu" id="back-menu">
+        <button onclick="backToMenu()">Menu</button>
+    </div>
+
+    <div id="room-screen" style="display: block;">
+        <img src="QUARTOS/quarto do ethan (1).jpg" alt="Quarto" id="room-background">
+        <img src="ethan/ethan-parado-unscreen.gif" id="player" alt="Ethan">
+        <div id="diario">
+            <div id="interaction-message"></div>
+            <img src="objetos/diario.png" alt="Diário" style="width: 100%; height: 100%;">
+        </div>
+    </div>
+
+
+    <div id="interaction-screen">
+        <img id="interaction-image" src="" alt="Diário">
+    </div>
+
+    <audio id="stepSound" src="audios/ethan-andando.mp3"></audio>
+
+    <script src="inventory.js"></script>
+    <script src="quarto-ethan.js"></script>
+
+</body>
+
+</html>

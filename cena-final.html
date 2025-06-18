@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       
+    <meta charset="UTF-8">
+       
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cena Final</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cena-final.css">
+</head>
+
+<body>
+        <div id="introVideoContainer" class="video-container">
+                <video id="introVideo" src="cenas/cenafinal.mp4" preload="auto">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+            </div>
+            <img id="finalImage" src="imagens/desenho_final.png" alt="Imagem Final" >
+
+        <div id="dialogueScreen">
+                <div id="contentWrapper">
+                        <div id="ethanDialogue">
+                                <img id="ethanDialogueImg" src="" alt="Ethan">
+                              <p id="ethanDialogueName"></p>
+                            </div>
+
+                        <div id="dialogueText">
+                                <p id="dialogueMessage"></p>
+                                <div id="dialogueIndicator">▼</div>
+                            </div>
+
+                        <div id="medicoDialogue">
+                                <img id="medicoDialogueImg" src="" alt="Médico">
+                                <p id="medicoDialogueName"></p>
+                            </div>
+                    </div>
+            </div>
+
+        <div id="outroVideoContainer" class="video-container" style="display: none;">
+                <video id="outroVideo" src="cenas/ethanfinal.mp4" preload="auto" loop>
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                <div id="fragmentedText">Memória Fragmentada</div>
+            </div>
+
+       
+    <script src="cena-final.js"></script>
+</body>
+
+</html>

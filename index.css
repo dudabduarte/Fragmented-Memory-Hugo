@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #121212;
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('imagens/imagem de fundo.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: -1;
+    animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: white;
+    animation: flicker 1.5s infinite alternate;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.menu button {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #555;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.menu button:hover {
+    background-color: #555;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.card {
+    background-color: #2a212c;
+    border: 2px solid rgb(133, 85, 85);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: #aaa;
+}
+
+#sound-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.intro-screen,
+.video-screen,
+#room-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+}
+
+.intro-screen {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.intro-content h2 {
+    padding: 2rem;
+    line-height: 2.8rem;
+    white-space: pre-line;
+}
+
+.video-screen {
+    background-color: black;
+    z-index: 10000;
+}
+
+.video-screen video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#room-screen {
+    background-color: black;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+#room-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#interaction-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 20000;
+}
+
+#interaction-screen img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+#gif-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    z-index: 10001;
+}
+
+#gif-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

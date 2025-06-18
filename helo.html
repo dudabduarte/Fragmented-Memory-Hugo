@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarto da Helo</title>
+
+    <link rel="stylesheet" href="helo.css">
+</head>
+
+<body>
+
+    <div class="menu" id="back-menu">
+        <button onclick="backToMenu()">Menu</button>
+    </div>
+    <div class="menu" id="inventario-botao" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+        <button onclick="toggleInventario()">Inventário(I)</button>
+    </div>
+
+    <!-- Janela de inventário -->
+    <div id="inventario-janela">
+        <ul id="inventario-lista" style="list-style: none; padding: 0; margin: 0;"></ul>
+    </div>
+    <div id="Helo">
+        <img src="personagens/helo-encontrada.png" alt="helo">
+    </div>
+
+    <img src="ethan/ethan-parado-unscreen.gif" id="player" alt="Ethan">
+
+    <div id="dialogueScreen">
+        <div id="dialogueContent">
+            <div id="ethanDialogue">
+                <img id="ethanDialogueImg" src="ethan/ethan-parado-unscreen.gif" alt="Ethan">
+                <p id="ethanDialogueName"></p>
+            </div>
+            <div id="dialogueText">
+                <p id="dialogueMessage"></p>
+                <div id="dialogueIndicator">▼</div>
+            </div>
+            <div id="heloDialogue">
+                <img id="heloDialogueImg" src="personagens/helo-encontrada.png" alt="Helo">
+                <p id="heloDialogueName"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="interaction"></div>
+
+    <audio id="stepSound" src="audios/ethan-andando.mp3" preload="auto"></audio>
+    <audio id="doorSound" src="audios/porta-aberta-325867.mp3" preload="auto"></audio>
+    <audio id="heloVoiceSound" src="audios/voz%20da%20helo.mp3" preload="auto"></audio>
+    <div id="interaction-screen">
+        <img id="interaction-image" src="" alt="Imagem do item" />
+        <button onclick="endInteraction()">Fechar</button>
+    </div>
+
+
+
+
+    <script src="inventory.js"></script>
+    <script src="helo.js"></script>
+
+</body>
+
+</html>

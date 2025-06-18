@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p-4-4</title>
+    <link rel="stylesheet" href="p-4-4.css">
+</head>
+
+<body>
+    <div class="menu" id="inventario-botao" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+        <button onclick="toggleInventario()">Inventário(I)</button>
+    </div>
+
+    <!-- Janela de inventário -->
+    <div id="inventario-janela">
+        <ul id="inventario-lista" style="list-style: none; padding: 0; margin: 0;"></ul>
+    </div>
+
+    <div class="menu" id="back-menu">
+        <button onclick="backToMenu()">Menu</button>
+    </div>
+    <div id="viewport"></div>
+    <div id="interaction">Pressione E para sair</div>
+    <div id="escrivaninha">
+        <img src="objetos/escrivaninha.png" alt="Escrivaninha">
+    </div>
+    <div id="painting-interaction">Pressione E para interagir com a escrivaninha</div>
+    <img src="ethan/ethan-parado-unscreen.gif" id="player" alt="Ethan">
+
+    <div id="overlay-image-container">
+        <img id="overlay-image" src="imagens/gaveta_aberta.png" alt="Enigma">
+        <button id="overlay-close-button" onclick="closeOverlayImage()">X</button>
+    </div>
+    <audio id="stepSound" src="cena-final.html" preload="auto"></audio>
+    <audio id="doorSound" src="audios/porta-aberta-325867.mp3" preload="auto"></audio>
+    <audio id="paintingSound" src="audios/mesadesom.mp3" preload="auto"></audio>
+    <script src="inventory.js"></script>
+    <script src="p-4-4.js"></script>
+    <div id="interaction-screen">
+        <img id="interaction-image" src="" alt="Imagem do item" />
+        <button onclick="fecharInteracao()">Fechar</button>
+    </div>
+
+
+</body>
+
+</html>x

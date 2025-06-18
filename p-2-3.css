@@ -1,0 +1,259 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+#viewport {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('QUARTOS/sala principal.jpg');
+    background-repeat: no-repeat;
+    background-size: 235% auto;
+    background-position: left center;
+    background-color: #f0f0f0;
+    transition: background-position 0.05s linear;
+}
+
+#interaction {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    display: none;
+    z-index: 15;
+}
+
+#player {
+    position: absolute;
+    width: 325px;
+    left: 50px;
+    top: 280px;
+    z-index: 10;
+    transition: left 0.1s, top 0.1s;
+}
+
+
+#player.walking {
+    content: url('ethan/ethan-andando-unscreen.gif');
+}
+
+#player.idle {
+    content: url('ethan/ethan-parado-unscreen.gif');
+}
+
+
+#painting-interaction {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    display: none;
+    z-index: 15;
+}
+
+#sequence-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    /* Ensure it's on top of everything */
+    display: none;
+    /* Hidden by default */
+}
+
+#sequence-image {
+    max-width: 90%;
+    /* Larger display for images */
+    max-height: 90%;
+    object-fit: contain;
+
+    /* Optional: adds a border to the image */
+}
+
+#caixa {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top: 370px;
+    z-index: 4;
+    /* Removido 'left: 0;' e 'transition: transform 0.05s linear;' */
+    /* Adicionada transição para 'left' */
+    transition: left 0.05s linear;
+}
+
+#caixa img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#painting-interaction {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    display: none;
+    z-index: 15;
+}
+
+/* --- NEW STYLES FOR THE OVERLAY IMAGE --- */
+#overlay-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    /* Dark overlay */
+    display: none;
+    /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* On top of everything */
+    overflow: auto;
+    /* In case the image is very large */
+}
+
+#overlay-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    /* Ensures the image fits without distortion */
+    border-radius: 10px;
+    /* Optional: adds a nice touch */
+}
+
+#overlay-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    /* For better centering of 'X' */
+    transition: background-color 0.3s;
+}
+
+#overlay-close-button:hover {
+    background-color: #d32f2f;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.menu button {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #555;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.menu button:hover {
+    background-color: #555;
+}
+
+#back-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    font-family: 'Press Start 2P';
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 20000
+}
+
+#back-menu:hover {
+    background-color: #555;
+}
+
+#inventario-janela {
+    position: fixed;
+    top: 70px;
+    /* Ajusta para ficar logo abaixo do botão */
+    right: 20px;
+    background-color: rgba(20, 20, 20, 0.95);
+    color: white;
+    border: 2px solid white;
+    padding: 20px;
+    z-index: 30000;
+    display: none;
+    max-width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+#inventario-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+#interaction-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 20000;
+}
+
+#interaction-screen img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}

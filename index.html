@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmented Memory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+
+
+    <audio id="background-music" src="audios/drone-high-tension-and-suspense-background-162365 (1).mp3" loop></audio>
+    <audio id="intro-music" src="audios/dont-cry-jennifer-snes.mp3" loop></audio>
+</head>
+
+<body>
+
+    <div class="background" id="background"></div>
+    <img id="sound-toggle" src="imagens/on.png" alt="Toggle Sound" onclick="toggleSound()">
+    <h1 id="titulo">Fragmented Memory</h1>
+
+    <div class="menu" id="menu">
+        <button onclick="startGame()">Começar Jogo</button>
+        <button onclick="showCredits()">Créditos</button>
+    </div>
+
+    <div class="video-screen" id="gif-screen">
+        <img src="ethan/ethan-acordando.gif" alt="Ethan acordando">
+    </div>
+
+
+
+    <div class="grid" id="credits" style="display: none;">
+        <div class="card">
+            <div class="description">Heloísa Sayuri Silva Saito</div>
+        </div>
+        <div class="card">
+            <div class="description">Lívia Maschietto Boneti</div>
+        </div>
+        <div class="card">
+            <div class="description">Maria Eduarda Bellarmino Duarte</div>
+        </div>
+        <div class="card">
+            <div class="description">Maria Eduarda Castro Lachimia</div>
+        </div>
+    </div>
+
+    <div class="menu" id="back-menu" style="display: none;">
+        <button onclick="backToMenu()">Voltar</button>
+    </div>
+
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-content">
+            <h2 id="intro-text"></h2>
+        </div>
+    </div>
+
+    <div class="video-screen" id="video-screen">
+        <video id="cutscene" src="cenas/cena abrindo os olhos.mp4"></video>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="inventory.js"></script>
+
+</body>
+
+</html>

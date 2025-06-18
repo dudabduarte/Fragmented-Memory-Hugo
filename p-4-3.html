@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p-4-3</title>
+    <link rel="stylesheet" href="p-4-3.css">
+</head>
+
+<body>
+
+    <div class="menu" id="back-menu">
+        <button onclick="backToMenu()">Menu</button>
+    </div>
+    <div class="menu" id="inventario-botao" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+        <button onclick="toggleInventario()">Inventário(I)</button>
+    </div>
+
+    <!-- Janela de inventário -->
+    <div id="inventario-janela">
+        <ul id="inventario-lista" style="list-style: none; padding: 0; margin: 0;"></ul>
+    </div>
+    <div id="viewport"></div>
+    <div id="interaction">Pressione E para sair</div>
+    <div id="mesa">
+        <img src="objetos/mesa_de_som.png" alt="Mesa de som">
+    </div>
+    <div id="painting-interaction">Pressione E para interagir com a mesa de som</div>
+    <img src="ethan/ethan-parado-unscreen.gif" id="player" alt="Ethan">
+
+
+    <div id="password-screen">
+        <div id="password-content">
+            <p class="tip">O melhor som é o começo daquilo que amamos.</p>
+            <input type="text" id="password-input" placeholder="Digite a senha">
+            <div>
+                <button type="button" onclick="checkPassword()">Confirmar</button>
+                <button type="button" id="cancel-button" onclick="fecharTelaSenha()">Cancelar</button>
+            </div>
+            <p id="password-message"></p>
+        </div>
+    </div>
+
+    <div id="reward-image-container">
+        <img id="reward-image" src="imagens/mao_chave.png" alt="Mesa Digital">
+        <button id="close-reward-image-btn">Fechar</button>
+    </div>
+
+
+    <audio id="stepSound" src="audios/ethan-andando.mp3" preload="auto"></audio>
+    <audio id="doorSound" src="audios/porta-aberta-325867.mp3" preload="auto"></audio>
+    <audio id="paintingSound" src="audios/drums.mp3" preload="auto"></audio>
+    <audio id="rewardSound" src="audios/mesadesom.mp3" preload="auto"></audio>
+    <div id="interaction-screen">
+        <img id="interaction-image" src="" alt="Imagem do item" />
+        <button onclick="fecharInteracao()">Fechar</button>
+    </div>
+
+    <script src="inventory.js"></script>
+    <script src="p-4-3.js"></script>
+</body>
+
+</html>
