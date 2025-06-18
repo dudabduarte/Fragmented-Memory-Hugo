@@ -183,7 +183,7 @@ verifyBtn.addEventListener('click', () => {
 
     if (input === correctPassword) {
         passwordMessage.style.color = 'lightgreen';
-        passwordMessage.textContent = 'Parabéns, recebeu sua recompensa: A mesa digital.';
+        passwordMessage.textContent = 'Parabéns, recebeu sua recompensa: A chave.';
         paintingSound.currentTime = 0;
         paintingSound.play();
         passwordField.disabled = true;
