@@ -331,9 +331,7 @@ function interagirComItem(item) {
         interactionScreen.style.display = 'flex';
         isInteracting = true;
         fecharInventario();
-    } else {
-        alert(`Imagem para "${item}" não encontrada.`);
-    }
+    }  
 }
 
 
